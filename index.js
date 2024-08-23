@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
+const memberRoutes = require('./routes/memberRoutes');
 
 const app = express();
 
@@ -25,6 +26,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Use routes
 app.use('/api/auth', authRoutes);
+app.use('/api/members', memberRoutes);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
